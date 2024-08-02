@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { storeHelper, findColors } from './utils';
 import WebView from './WebView';
 import styles from './style';
-import { screenWidth } from './constants';
+import { screenHeight } from './constants';
 
 const propTypes = {
   isModalVisible: PropTypes.bool.isRequired,
@@ -119,7 +119,7 @@ const ChatWootWidget = ({
   } else {
     return (
       <View
-        style={[styles.container, { left: isModalVisible ? 0 : screenWidth }]}>
+        style={[styles.container, { left: isModalVisible ? 0 : screenHeight * 2 }]}>
         {renderContentView()}
       </View>
     );
