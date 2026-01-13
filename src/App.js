@@ -61,13 +61,17 @@ const ChatWootWidget = ({
   }, []);
 
   useEffect(() => {
+    let backHandlerSubscription;
     if (isModalVisible) {
-      BackHandler.addEventListener('hardwareBackPress', handleBackPress);
+      backHandlerSubscription = BackHandler.addEventListener(
+        'hardwareBackPress',
+        handleBackPress
+      );
     } else {
-      BackHandler.removeEventListener('hardwareBackPress', handleBackPress);
+      backHandlerSubscription?.remove();
     }
     return () => {
-      BackHandler.removeEventListener('hardwareBackPress', handleBackPress);
+      backHandlerSubscription?.remove();
     };
   }, [isModalVisible]);
 
